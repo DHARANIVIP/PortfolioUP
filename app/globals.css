@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-playfair: "Playfair Display", serif;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #101010;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ─── Outline text utilities ─── */
+.text-outline {
+  -webkit-text-stroke: 2px #000000;
+  color: transparent;
+}
+
+.text-outline-white {
+  -webkit-text-stroke: 2px #ffffff;
+  color: transparent;
+}
+
+.text-outline-lime {
+  -webkit-text-stroke: 2px #E5FF1F;
+  color: transparent;
+}
+
+/* ─── Neo-brutalist shadows ─── */
+.shadow-neo {
+  box-shadow: 8px 8px 0px #3355FF;
+}
+
+.shadow-neo-lime {
+  box-shadow: 8px 8px 0px #E5FF1F;
+}
+
+.shadow-neo-black {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+/* ─── Scrollbar hide ─── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─── Terminal cursor blink ─── */
+.cursor-blink {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: #E5FF1F;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Marquee ─── */
+.marquee-track {
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Dashed SVG line draw-on ─── */
+.dash-line {
+  stroke-dasharray: 6 4;
+  stroke-dashoffset: 0;
+}
+
+/* ─── Watermark text ─── */
+.watermark {
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Card hover ─── */
+.project-card {
+  transition: transform 0.3s ease;
+}
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+/* ─── Highlight reveal animation ─── */
+@keyframes highlightReveal {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.highlight-reveal {
+  position: relative;
+  display: inline;
+}
+.highlight-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #E5FF1F;
+  transform-origin: left;
+  animation: highlightReveal 0.6s ease forwards;
+  z-index: -1;
+}
+
+/* ─── Lenis smooth scroll ─── */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ─── Binary digit decorations ─── */
+.binary-bg span {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* ─── Journey card spotlight ─── */
+.journey-card {
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+.journey-card.active {
+  transform: scale(1);
+  filter: blur(0px);
+  opacity: 1;
+}
+.journey-card.inactive {
+  transform: scale(0.9);
+  filter: blur(2px);
+  opacity: 0.5;
+}
+
+/* ─── Glitch title effect ─── */
+@keyframes glitchSlice1 {
+  0%   { clip-path: inset(0 0 80% 0); transform: translateX(-6px); }
+  100% { clip-path: inset(0 0 80% 0); transform: translateX(0); }
+}
+@keyframes glitchSlice2 {
+  0%   { clip-path: inset(40% 0 40% 0); transform: translateX(6px); }
+  100% { clip-path: inset(40% 0 40% 0); transform: translateX(0); }
+}
+@keyframes glitchSlice3 {
+  0%   { clip-path: inset(80% 0 0 0); transform: translateX(-4px); }
+  100% { clip-path: inset(80% 0 0 0); transform: translateX(0); }
+}
+
+/* ─── Selection highlight ─── */
+::selection {
+  background: #E5FF1F;
+  color: #000000;
+}
