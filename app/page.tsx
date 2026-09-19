@@ -13,6 +13,8 @@ import Stack from "@/components/sections/Stack";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
+import AskDharaniModal from "@/components/ai/AskDharaniModal";
+
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
 
@@ -38,6 +40,7 @@ export default function Home() {
               <Contact />
             </main>
             <Footer />
+            <AskDharaniModal />
           </motion.div>
         )}
       </AnimatePresence>

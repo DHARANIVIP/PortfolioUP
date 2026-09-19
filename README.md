@@ -141,7 +141,8 @@ npm run start
 
 - **Developer:** Dharani V
 - **GitHub:** [@DHARANIVIP](https://github.com/DHARANIVIP)
-- **Email:** [vvdharani57@gmail.com](mailto:vvdharani57@gmail.com)
+- **LinkedIn:** [Dharani V](https://www.linkedin.com/in/dharani-v-92194a314/)
+- **Contact:** Available via portfolio contact form & on-demand copy button
 - **Live Portfolio:** [PortfolioUP](https://github.com/DHARANIVIP/PortfolioUP)
 
 ---
