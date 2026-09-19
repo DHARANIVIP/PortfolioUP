@@ -223,29 +223,44 @@ export default function AskDharaniModal() {
 
   return (
     <>
-      {/* Floating Action Pill */}
+      {/* Floating Action Button — Dark squircle with Lime Chat Icon */}
       <div className="fixed bottom-6 right-6 z-40">
         <motion.button
           ref={triggerButtonRef}
           onClick={() => setIsOpen(true)}
           className="
-            group flex items-center gap-2.5 px-4 py-3 rounded-full
-            bg-ink text-white border-2 border-lime shadow-neo-lime
-            hover:-translate-y-1 hover:bg-black transition-all duration-200
-            focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2 focus:ring-offset-ink
+            group relative flex items-center justify-center
+            w-12 h-12 md:w-14 md:h-14 rounded-2xl
+            bg-[#18181b] border border-white/15
+            hover:border-lime/60 shadow-xl
+            hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(229,255,31,0.3)]
+            transition-all duration-200
+            focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2 focus:ring-offset-black
           "
           aria-haspopup="dialog"
           aria-expanded={isOpen}
           aria-label="Open Ask Dharani AI assistant"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <span className="relative flex h-2.5 w-2.5">
+          {/* Live indicator dot */}
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-lime" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-lime border-2 border-black" />
           </span>
-          <span className="font-sans font-black text-xs md:text-sm tracking-wider uppercase text-white flex items-center gap-1.5">
-            ASK DHARANI <Sparkles size={14} className="text-lime inline" />
+
+          {/* Lime Chat Bubble Icon matching exact design */}
+          <MessageSquare className="w-6 h-6 md:w-7 md:h-7 text-lime stroke-[2.2] transition-transform duration-200 group-hover:scale-110" />
+
+          {/* Tooltip on hover */}
+          <span className="
+            absolute right-full mr-3 px-3 py-1.5 rounded-lg
+            bg-black/90 text-white text-xs font-mono font-bold tracking-wider
+            border border-white/10 shadow-lg whitespace-nowrap
+            opacity-0 group-hover:opacity-100 transition-opacity duration-200
+            pointer-events-none flex items-center gap-1.5
+          ">
+            ASK DHARANI <Sparkles size={12} className="text-lime" />
           </span>
         </motion.button>
       </div>

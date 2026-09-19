@@ -89,36 +89,49 @@ export default function Hero() {
 
         {/* Bottom — tagline */}
         <motion.div
-          className="flex flex-col items-center text-center"
+          className="flex flex-col items-center text-center relative z-20 pb-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
           <p
             className="font-sans font-black text-3xl md:text-5xl text-black leading-tight"
-            style={{ textShadow: "0 2px 24px rgba(255,255,255,0.6)" }}
+            style={{ textShadow: "0 2px 28px rgba(255,255,255,0.95), 0 0 10px rgba(255,255,255,0.8)" }}
           >
             Full Stack,
             <br />
             <span className="text-outline">Engineered</span> with{" "}
-            <span className="bg-lime px-2">Intelligence.</span>
+            <span className="bg-lime px-2 shadow-sm">Intelligence.</span>
           </p>
         </motion.div>
       </div>
 
-      {/* Hero photo placeholder — centered, above tagline */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-5 pointer-events-none">
+      {/* Hero photo — centered arch frame */}
+      <motion.div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[5] pointer-events-none select-none"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+      >
         <div
-          className="w-[320px] md:w-[420px] h-[420px] md:h-[560px] border-2 border-dashed border-black/20 rounded-t-full flex items-end justify-center pb-8 bg-white/10"
-          aria-label="Hero photo placeholder"
+          className="relative w-[300px] sm:w-[360px] md:w-[420px] h-[450px] md:h-[580px] rounded-t-[150px] md:rounded-t-[210px] overflow-hidden border-2 border-black/10 shadow-2xl bg-white/20"
+          style={{
+            maskImage: "linear-gradient(to bottom, black 0%, black 65%, transparent 98%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 65%, transparent 98%)",
+          }}
         >
-          <span className="font-inter text-xs text-black/30 tracking-widest uppercase text-center px-4">
-            [ HERO PHOTO PLACEHOLDER ]<br />hero-photo.png<br />Transparent PNG
-          </span>
+          <Image
+            src="/hero-photo.jpg"
+            alt="Dharani V - Full Stack & AI Engineer"
+            fill
+            sizes="(max-width: 768px) 360px, 420px"
+            priority
+            className="object-cover object-[center_16%]"
+          />
+          {/* Subtle bottom tint overlay blending into hero background */}
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#EFF0E8] via-[#EFF0E8]/50 to-transparent pointer-events-none" />
         </div>
-        {/* Uncomment once you have the real photo: */}
-        {/* <Image src="/hero-photo.png" alt="Dharani V" width={420} height={560} priority className="object-contain" /> */}
-      </div>
+      </motion.div>
     </section>
   );
 }

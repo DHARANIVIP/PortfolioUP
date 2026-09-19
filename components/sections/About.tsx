@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import Terminal from "@/components/ui/Terminal";
+import PixelSwap from "@/components/ui/PixelSwap";
 
 const HOW_I_BUILD = [
   {
@@ -37,7 +38,14 @@ const BINARY_POSITIONS = [
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setIsRevealed(true);
+    }
+  }, [inView]);
 
   return (
     <section
@@ -70,31 +78,101 @@ export default function About() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <EyebrowLabel number="01" label="ABOUT ME" />
+          {/* PixelSwap Interactive Heading - Transparent & Lag-Free */}
+          <PixelSwap
+            firstContent={
+              <div className="w-full h-full flex flex-col justify-between bg-[#DBEFFB] select-none cursor-pointer relative py-2 pr-4 overflow-hidden">
+                {/* Decorative watermarks from user design */}
+                <span className="absolute top-0 left-0 font-mono font-black text-6xl text-black/[0.07] select-none pointer-events-none" aria-hidden="true">
+                  01
+                </span>
+                <span className="absolute top-8 left-[38%] font-mono font-black text-2xl text-black/[0.08] select-none pointer-events-none" aria-hidden="true">
+                  10
+                </span>
+                <span className="absolute top-14 right-4 font-mono font-black text-7xl text-black/[0.07] select-none pointer-events-none" aria-hidden="true">
+                  10
+                </span>
 
-          {/* Big heading */}
-          <h2 className="font-sans font-black text-5xl md:text-6xl xl:text-7xl leading-[1.0] mt-8 text-black">
-            I don&apos;t just
-            <br />
-            write{" "}
-            <span className="text-outline relative inline-block">
-              code
-            </span>
-            .
-            <br />
-            I build
-            <br />
-            <span className="relative inline-block">
-              <span className="relative z-10">systems that think.</span>
-              <motion.span
-                className="absolute inset-0 bg-lime -z-0"
-                style={{ transformOrigin: "left" }}
-                initial={{ scaleX: 0 }}
-                animate={inView ? { scaleX: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-              />
-            </span>
-          </h2>
+                <div className="relative z-10">
+                  <EyebrowLabel number="01" label="CORE PHILOSOPHY" />
+                  <h2 className="font-sans font-black text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.02] mt-6 text-black/60 tracking-tight">
+                    Engineering
+                    <br />
+                    scalable{" "}
+                    <span className="text-outline relative inline-block">
+                      software
+                    </span>
+                    .
+                    <br />
+                    I craft
+                    <br />
+                    <span className="relative inline-block mt-1">
+                      <span className="relative z-10 text-black/80">real intelligence.</span>
+                      <span className="absolute inset-0 bg-white/70 -z-0" />
+                    </span>
+                  </h2>
+                </div>
+
+                <div className="mt-8 flex items-center gap-2 font-mono text-xs text-black/50 tracking-wider uppercase relative z-10">
+                  <span className="w-2 h-2 rounded-full bg-black/40" />
+                  <span>[SCROLL / CLICK TO DECRYPT ABOUT ME]</span>
+                </div>
+              </div>
+            }
+            secondContent={
+              <div className="w-full h-full flex flex-col justify-between bg-[#DBEFFB] select-none cursor-pointer relative py-2 pr-4 overflow-hidden">
+                {/* Decorative watermarks matching exact user screenshot */}
+                <span className="absolute top-0 left-0 font-mono font-black text-6xl text-black/[0.08] select-none pointer-events-none" aria-hidden="true">
+                  01
+                </span>
+                <span className="absolute top-8 left-[38%] font-mono font-black text-2xl text-black/[0.09] select-none pointer-events-none" aria-hidden="true">
+                  10
+                </span>
+                <span className="absolute top-14 right-4 font-mono font-black text-7xl text-black/[0.08] select-none pointer-events-none" aria-hidden="true">
+                  10
+                </span>
+
+                <div className="relative z-10">
+                  <EyebrowLabel number="01" label="ABOUT ME" />
+                  <h2 className="font-sans font-black text-4xl sm:text-5xl md:text-6xl xl:text-7xl leading-[1.02] mt-6 text-black tracking-tight">
+                    I don&apos;t just
+                    <br />
+                    write{" "}
+                    <span className="text-outline relative inline-block">
+                      code
+                    </span>
+                    .
+                    <br />
+                    I build
+                    <br />
+                    <span className="relative inline-block mt-1">
+                      <span className="relative z-10 text-black">systems that think.</span>
+                      <span className="absolute inset-0 bg-lime -z-0" />
+                    </span>
+                  </h2>
+                </div>
+
+                <div className="mt-8 flex items-center gap-2 font-mono text-xs text-black/60 tracking-wider uppercase relative z-10">
+                  <span className="w-2 h-2 rounded-full bg-lime animate-ping" />
+                  <span>AI SYSTEMS ARCHITECT // FULL-STACK DEPTH</span>
+                </div>
+              </div>
+            }
+            pixelSize={56}
+            gap={0}
+            pixelRadius={0}
+            pixelScale={0.35}
+            pixelSpin={0}
+            fade={true}
+            duration={850}
+            pixelDuration={300}
+            pattern="diagonal"
+            trigger="click"
+            active={isRevealed}
+            onActiveChange={setIsRevealed}
+            aspectRatio="16 / 11"
+            className="w-full bg-transparent overflow-hidden cursor-pointer select-none"
+          />
 
           {/* HOW I BUILD */}
           <div className="mt-12">
