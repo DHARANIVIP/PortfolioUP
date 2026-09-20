@@ -106,30 +106,28 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Hero photo — centered arch frame */}
+      {/* Hero photo — cutout with name in backside */}
       <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[5] pointer-events-none select-none"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[5] pointer-events-none select-none flex justify-center items-end"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
       >
         <div
-          className="relative w-[300px] sm:w-[360px] md:w-[420px] h-[450px] md:h-[580px] rounded-t-[150px] md:rounded-t-[210px] overflow-hidden border-2 border-black/10 shadow-2xl bg-white/20"
+          className="relative w-[300px] sm:w-[400px] md:w-[480px] lg:w-[560px] xl:w-[620px] h-[480px] sm:h-[600px] md:h-[700px] lg:h-[780px] xl:h-[840px] max-h-[86vh]"
           style={{
-            maskImage: "linear-gradient(to bottom, black 0%, black 65%, transparent 98%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 65%, transparent 98%)",
+            maskImage: "linear-gradient(to bottom, black 0%, black 84%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 84%, transparent 100%)",
           }}
         >
           <Image
-            src="/hero-photo.jpg"
+            src="/hero-cutout.png"
             alt="Dharani V - Full Stack & AI Engineer"
             fill
-            sizes="(max-width: 768px) 360px, 420px"
+            sizes="(max-width: 640px) 300px, (max-width: 768px) 400px, (max-width: 1024px) 480px, 620px"
             priority
-            className="object-cover object-[center_16%]"
+            className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)]"
           />
-          {/* Subtle bottom tint overlay blending into hero background */}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#EFF0E8] via-[#EFF0E8]/50 to-transparent pointer-events-none" />
         </div>
       </motion.div>
     </section>
